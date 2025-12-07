@@ -41,5 +41,16 @@ int main() {
     end = wall_time();
 
     printf("Serial time: %.6f seconds\n", end - start);
+
+    // Free allocated memory
+    for (int i = 0; i < N; i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+    }
+    free(A);
+    free(B);
+    free(C);
+
     return 0;
 }
