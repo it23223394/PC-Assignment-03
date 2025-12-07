@@ -34,6 +34,7 @@ int main() {
 
     start = wall_time();
 
+    // O(N^3) multiply: C[i][j] = sum over k of A[i][k] * B[k][j]
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
             for (int k = 0; k < N; k++)
