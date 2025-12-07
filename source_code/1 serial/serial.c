@@ -13,11 +13,12 @@ double wall_time() {
 int main() {
     double **A, **B, **C;
     double start, end;
-
+    // Allocate row pointers
     A = (double**) malloc(N * sizeof(double*));
     B = (double**) malloc(N * sizeof(double*));
     C = (double**) malloc(N * sizeof(double*));
-
+    
+    // Allocate each row
     for (int i = 0; i < N; i++) {
         A[i] = (double*) malloc(N * sizeof(double));
         B[i] = (double*) malloc(N * sizeof(double));
@@ -54,3 +55,27 @@ int main() {
 
     return 0;
 }
+
+/* #define ROWS_A 800   // A is ROWS_A × COLS_A
+#define COLS_A 600   // Must equal ROWS_B
+#define ROWS_B 600   // B is ROWS_B × COLS_B
+#define COLS_B 500   // Result C is ROWS_A × COLS_B
+
+// Allocate matrices differently
+double **A = malloc(ROWS_A * sizeof(double*));
+double **B = malloc(ROWS_B * sizeof(double*));
+double **C = malloc(ROWS_A * sizeof(double*));
+
+for (int i = 0; i < ROWS_A; i++) {
+    A[i] = malloc(COLS_A * sizeof(double));
+    C[i] = malloc(COLS_B * sizeof(double));
+}
+for (int i = 0; i < ROWS_B; i++) {
+    B[i] = malloc(COLS_B * sizeof(double));
+}
+
+// Modified multiplication loop
+for (int i = 0; i < ROWS_A; i++)
+    for (int j = 0; j < COLS_B; j++)
+        for (int k = 0; k < COLS_A; k++)  // Note: COLS_A must equal ROWS_B
+            C[i][j] += A[i][k] * B[k][j]; */
